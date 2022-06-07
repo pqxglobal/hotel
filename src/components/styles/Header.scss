@@ -1,0 +1,50 @@
+@import './variables/fonts';
+@import './variables/colors';
+@import './variables//mixins';
+
+.header {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+}
+
+.nav-container {
+    @include flex-center;
+    justify-content: space-between;
+    font-family: $font-poppins;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+
+    .menu-icon {
+        font-size: 70px;
+        color: $header-color;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+}
+
+.logo {
+    h1 {
+        margin-left: 1rem;
+    }
+}
+
+.right {
+    ul {
+        @include flex-center;
+        margin-right: 3rem;
+        list-style: none;
+
+        li {
+
+            a {
+                text-decoration: none;
+                color: $header-color;
+                margin: 1rem;
+            }
+        }
+    }
+}
