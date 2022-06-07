@@ -1,17 +1,25 @@
-
 import { MenuOutlined } from '@material-ui/icons'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './styles/Header.scss'
-import React from 'react';
+import { Menu } from './Menu'
+
 
 const Header = () => {
+
+    const [openMenu, setOpenMenu] = useState(false)
+
+    const showMenu = () => {
+        setOpenMenu(!openMenu)
+    }
+
+
     return (
-        <div classname='header'>
+        <div className='header'>
             <nav className='nav-container'>
                 <div className="menu">
-                    <MenuOutlined className='menu-icon' />
+                    <MenuOutlined className='menu-icon' onClick={showMenu} />
                 </div>
-
 
                 <div className="logo">
                     <h1>Etravel</h1>
@@ -21,7 +29,7 @@ const Header = () => {
                 <div className="right">
                     <ul>
                         <li>
-                            <Link to='/places'>Places</Link>                            
+                            <Link to='/places'>Places</Link>
                         </li>
                         <li>
                             <Link to='/pricing'>Pricing</Link>
@@ -35,6 +43,27 @@ const Header = () => {
                     </ul>
                 </div>
             </nav>
+
+
+            <nav className={openMenu ? 'slider active' : 'slider'}>
+                <ul className={showMenu} onClick={showMenu}>
+                    {Menu.map((item, index) => {
+                        return (
+                            <div className='container'>
+                                <li className={item.className}>
+                                    <Link to={item.path}>
+                                        {item.text}
+                                    </Link>
+                                </li>
+                                <p className='icon'>{item.icon}</p>
+                            </div>
+                        )
+                    })}
+                </ul>
+            </nav>
+
+
+
         </div>
     )
 }

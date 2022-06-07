@@ -2,3 +2,8 @@
     display: flex;
     align-items: center;
 }
+
+@mixin trans-color {
+    text-transform: uppercase;
+    color: $main-color;
+}
